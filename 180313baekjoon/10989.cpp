@@ -9,16 +9,6 @@ using namespace std;
 
 int arr[10001];
 
-// swap함수 구현, 포인터 사용으로 배열에 바로 적용 가능
-void swap(int* a, int* b)
-{
-	int* temp;
-	temp = a;
-	a = b;
-	b = temp;
-	return;
-}
-
 // main
 int main()
 {
