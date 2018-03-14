@@ -5,7 +5,6 @@
 *	@date		2018.03.15
 */
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 // string 대신 간이 string구조체 생성
@@ -45,7 +44,7 @@ bool compare(myString a, myString b)
 }
 
 // selection sort 구현
-void ssort(myString arr[], int size)
+void sort(myString arr[], int size)
 {
 	int min;
 	for (int i = 0; i < size; i++)
@@ -100,7 +99,7 @@ int main()
 	}
 
 	// 정렬
-	sort(arr, arr+N, compare);
+	sort(arr, N);
 
 	// 출력
 	cout << arr[0].string << "\n";
