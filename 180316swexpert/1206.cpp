@@ -8,43 +8,42 @@
 using namespace std;
 
 int arr[1001];
-int check[4] = { -2, -1, 1, 2 };
 
+// max함수 구현
 int max(int a, int b)
 {
-	if (a > b)
-		return a;
-	else
-		return b;
+	return a > b ? a : b;
 }
 
 // main
 int main()
 {
 	ios::sync_with_stdio(false);
-	// 테스트 케이스 개수 입력
 
 	int T = 10;
 	int N;
 	while(T--)
 	{
+		// 조망권의 합은 매번 초기화
 		int sum = 0;
+		// 건물 개수 입력
 		cin >> N;
 
+		// 건물 높이 입력
 		for (int i = 0; i < N; i++)
 			cin >> arr[i];
-
-		int max_number = 0;
-		for (int i = 2; i < N - 1; i++)
+		
+		// 조망권의 합 계산
+		for (int i = 2; i < N - 2; i++)
 		{
-			for (int j = 0; j < 4; j++)
-			{
-				int temp = i + check[j];
-				max_number = max(max_number, arr[temp]);
-			}
-			sum += (arr[i] > max_number) ? arr[i] - max_number : 0;
+			int compare = max(max(arr[i - 2], arr[i - 1]), max(arr[i + 1], arr[i + 2]));
+			if (compare < arr[i])
+				sum += arr[i] - compare;
+			else
+				continue;
 		}
 
+		// 출력
 		cout << "#" << 10-T << " " << sum << "\n";
 	}
 
