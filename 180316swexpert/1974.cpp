@@ -1,5 +1,5 @@
 ﻿/**
-*	sw Expert Academy
+*	SW Expert Academy
 *	No. 1974 스도쿠 검증
 *	@author	peter9378
 *	@date		2018.03.20
@@ -17,6 +17,7 @@ void initialize()
 {
 	for (int i = 1; i < 10; i++)
 		check[i] = false;
+	return;
 }
 
 bool checking()
