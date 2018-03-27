@@ -1,8 +1,8 @@
 /**
-*	baekjoon_stepbystep
+*	SW Expert Academy
 *	No. 1954 달팽이 숫자
 *	@author	peter9378
-*	@date		2018.03.24
+*	@date		2018.03.27
 */
 #include <iostream>
 using namespace std;
