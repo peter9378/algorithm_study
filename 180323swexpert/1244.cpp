@@ -23,6 +23,10 @@ void swap(int* a, int* b)
 int sort(int arr[], int size, int count)
 {
 	int max, now_count = 0;
+	int temp[6];
+	for (int i = 0; i < size; i++)
+		temp[i] = arr[i];
+
 	for (int i = 0; i < size; i++)
 	{
 		max = i;
@@ -43,7 +47,12 @@ int sort(int arr[], int size, int count)
 				return 0;
 		}
 	}
-	return count - now_count;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] != temp[i])
+			return count - now_count;
+	}
+	return count;
 }
 
 // ctoi 함수 구현
@@ -99,13 +108,24 @@ int main()
 		int remain_count = sort(arr, str.length(), swap_count);
 
 		// 소트했는데 카운트가 남아있으면
-		if (remain_count)
+		if (remain_count>0)
 		{
 			// 홀수일 경우에만 맨 끝 두자리를 바꿈
 			if (remain_count % 2)
+			{
+				swap(arr[str.length() - 1], arr[str.length() - 2]);
+				// 근데 사실 아무것도 바뀐게 없는거면 다시 바꿈
+				if(remain_count == swap_count)
+					swap(arr[str.length() - 1], arr[str.length() - 2]);
+			}
+		}
+		else
+		{
+			// 카운트가 없는데 순서가 괜히 바뀐 경우
+			if (arr[str.length() - 2] < arr[str.length() - 1])
 				swap(arr[str.length() - 1], arr[str.length() - 2]);
 		}
-		
+
 		// 출력
 		cout << "#" << test_case << " ";
 		for (int i = 0; i < str.length(); i++)
