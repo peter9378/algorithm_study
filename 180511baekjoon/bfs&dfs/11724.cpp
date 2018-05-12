@@ -1,8 +1,8 @@
 ﻿/**
 *	baekjoon_stepbystep
-*	No. 1260	DFS와 BFS
+*	No. 11724	연결 요소의 개수 풀이
 *	@author	peter9378
-*	@date		2018.05.11
+*	@date		2018.05.12
 */
 #include <iostream>
 using namespace std;
