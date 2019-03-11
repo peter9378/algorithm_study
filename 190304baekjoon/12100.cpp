@@ -56,7 +56,8 @@ void merge(int direction)
 		{
 			for (int j = N - 1; j >= 0; j--)
 			{
-				if (arr[j][i] != 0) q.push(arr[j][i]);
+				if (arr[j][i] != 0) 
+					q.push(arr[j][i]);
 				arr[j][i] = 0;
 			}
 
