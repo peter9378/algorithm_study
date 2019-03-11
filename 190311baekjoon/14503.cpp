@@ -5,8 +5,6 @@
 *	@date		2019.03.11
 */
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 int arr[55][55];
