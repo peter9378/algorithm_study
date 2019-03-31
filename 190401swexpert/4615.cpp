@@ -2,7 +2,7 @@
 *	SW Expert Academy
 *	No. 4615	재미있는 오셀로 게임
 *	@author	peter9378
-*	@date		2019.03.31
+*	@date		2019.04.01
 */
 #include <iostream>
 #include <queue>
@@ -15,6 +15,7 @@ int arr[11][11];
 int direction_x[] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 int direction_y[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 
+// initialize board array
 void init()
 {
 	for (int i = 0; i < 11; i++)
@@ -66,16 +67,19 @@ int main()
 				bool flag = true;
 				while (arr[next_x][next_y] != color)
 				{
+					// if empty, break
 					if (arr[next_x][next_y] == 0)
 					{
 						flag = false;
 						break;
 					}
+					// add queue when color is different
 					q.push(make_pair(next_x, next_y));
 					next_x += direction_x[j];
 					next_y += direction_y[j];
 				}
 
+				// change color
 				if (flag)
 				{
 					while (!q.empty())
@@ -87,6 +91,7 @@ int main()
 			}
 		}
 
+		// calculate color
 		int black=0, white = 0;
 		for (int i = 1; i <= N; i++)
 		{
@@ -103,6 +108,8 @@ int main()
 				}
 			}
 		}
+		
+		// print answer
 		cout << "#" << test_case << " " << black << " " << white << "\n";
 	}
 
