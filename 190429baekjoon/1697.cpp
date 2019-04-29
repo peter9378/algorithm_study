@@ -30,9 +30,7 @@ int main()
 		int count = q.front().second;
 		q.pop();
 
-		if (current < 0 || current>100000)
-			continue;
-		if (visit[current])
+		if (current < 0 || current>100000 || visit[current])
 			continue;
 
 		visit[current] = true;
