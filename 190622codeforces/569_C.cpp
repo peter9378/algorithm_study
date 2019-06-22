@@ -1,6 +1,6 @@
 ﻿/**
 *	Code Forces
-*	#569 A.	Alex and a Rhombus
+*	#569 C.	Valeriy and Deque
 *	@author	peter9378
 *	@date		2019.06.22
 */
@@ -30,6 +30,7 @@ int main()
 		d.push_back(temp);
 	}
 
+	// process first
 	for (int i = 1; i < n; i++)
 	{
 		int A = d[0], B = d[1];
@@ -48,8 +49,10 @@ int main()
 			d.push_back(A);
 		}
 	}
+	// and check max number(the first one)
 	int max_num = d[0];
 
+	// print answer by size of l
 	for (int i = 0; i < q; i++)
 	{
 		long long l;
