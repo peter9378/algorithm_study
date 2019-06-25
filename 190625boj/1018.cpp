@@ -1,6 +1,6 @@
 ﻿/**
 *	BOJ
-*	No.15649	N과  M(1)
+*	No.1018	체스판 다시 칠하기
 *	@author	peter9378
 *	@date		2019.06.25	- Remember 6.25 -
 */
