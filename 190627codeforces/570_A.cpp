@@ -31,7 +31,6 @@ int main()
 	{
 		N++;
 	}
-
 	cout << N;
 	return 0;
 }
