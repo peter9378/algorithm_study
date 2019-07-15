@@ -73,33 +73,37 @@ int solution(string name) {
 	if (flag)
 		return 0;
 
-	int curIndex = 0;
-	while (!isDone(name))
+	for (int i = 0; i < name.length(); i++)
 	{
-		if (name[curIndex] != 'A')
-		{
-			answer += min(name[curIndex] - 65, 91 - name[curIndex]);
-			name[curIndex] = 'A';
-			int temp = getNearIndex(name, curIndex);
-			if(temp != -1)
-				answer += abs(min(temp - curIndex, curIndex - temp+ name.length()));
-			curIndex = temp;
-		}
-		else
-		{
-			int temp = getNearIndex(name, curIndex);
-			answer += min(temp - answer, answer - temp + name.length());
-			curIndex = temp;
-		}
+		answer += min(name[i] - 65, 91 - name[i]);
 	}
-	return answer;
+
+	int temp = name.length();
+	for (int i = 0; i < name.length(); i++)
+	{
+		int j = i + 1;
+		while (i != j && name[j] == 'A')
+			j = (j + 1) % name.length();
+		temp = min(temp, i + (name.length() + i - j) % name.length());
+	}
+
+	reverse(name.begin() + 1, name.end());
+	for (int i = 0; i < name.length(); i++)
+	{
+		int j = i + 1;
+		while (i != j && name[j] == 'A')
+			j = (j + 1) % name.length();
+		temp = min(temp, i + (name.length() + i - j) % name.length());
+	}
+
+	return answer + temp;
 }
 
 int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
-	
+
 	int T;
 	cin >> T;
 
