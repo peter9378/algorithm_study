@@ -124,8 +124,6 @@ int main()
 						cnt = max(cnt, temp[nx][ny]);
 				}
 			}
-			if (cnt >= answer)
-				break;
 		}
 		//print();
 		if (promise())
