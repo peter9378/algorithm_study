@@ -17,6 +17,8 @@
 
 using namespace std;
 
+bool arr[2002];
+
 // main function
 int main()
 {
@@ -26,23 +28,18 @@ int main()
 	int N;
 	cin >> N;
 
-	vector<int> v;
-	set<int> s;
 	for (int i = 0; i < N; i++)
 	{
 		int temp;
 		cin >> temp;
-
-		if (s.find(temp) == s.end())
-		{
-			s.insert(temp);
-			v.push_back(temp);
-		}
+		arr[temp + 1000] = true;
 	}
-	sort(v.begin(), v.end());
 
-	for (int i = 0; i < v.size(); i++)
-		cout << v[i] << " ";
+	for (int i = 0; i < 2002; i++)
+	{
+		if (arr[i])
+			cout << i - 1000 << " ";
+	}
 
 	return 0;
 }
