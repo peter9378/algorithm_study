@@ -40,6 +40,5 @@ int main()
 		cout << "Junhee is cute!";
 	else
 		cout << "Junhee is not cute!";
-
 	return 0;
 }
