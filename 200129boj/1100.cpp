@@ -2,7 +2,7 @@
 *	BOJ
 *	No.1100	го╬А д╜
 *	@author	peter9378
-*	@date		2020.01.30
+*	@date		2020.01.29
 */
 #include <iostream>
 #include <algorithm>
