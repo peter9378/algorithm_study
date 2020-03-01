@@ -64,7 +64,7 @@ int main()
 	}
 
 	long long left = 1;
-	long long right = 2222'222'222;
+	long long right = 2222222222;
 
 	while (left < right)
 	{
