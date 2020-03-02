@@ -48,8 +48,9 @@ int main()
 
 	while (T--)
 	{
+		cin >> n;
 		for (int i = 1; i <= n; i++)
-			arr[i];
+			cin >> arr[i];
 
 		for (int i = 1; i <= n; i++)
 		{
@@ -58,11 +59,9 @@ int main()
 
 			temp[tmp] = i;
 		}
+		dfs(1, 1, n);
+		cout << "\n";
 	}
-
-	dfs(1, 1, n);
-
-
 
 	return 0;
 }
