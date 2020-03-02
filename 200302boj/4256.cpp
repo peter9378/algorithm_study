@@ -1,8 +1,8 @@
 /**
 *	BOJ
-*	No.1557	Á¦°ö ¤¤¤¤
+*	No.4256	Æ®¸®
 *	@author	peter9378
-*	@date		2020.03.01	3.1DAY
+*	@date		2020.03.02
 */
 #include <iostream>
 #include <algorithm>
