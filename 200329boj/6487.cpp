@@ -2,7 +2,7 @@
 *	BOJ
 *	No.6487	두 직선의 교차 여부
 *	@author	peter9378
-*	@date		2020.03.29
+*	@date		2020.03.30
 */
 #include <iostream>
 #include <algorithm>
@@ -41,7 +41,7 @@ int main()
 			printf("POINT %.2lf %.2lf\n", a*r + x[0], b*r + y[0]);
 		}
 		else
-			cout << (x[2] - x[0])*b - (y[2] - y[0])*a ? "NONE" : "LINE";
+			puts((x[2] - x[0])*b - (y[2] - y[0])*a ? "NONE" : "LINE");
 	}
 
 	return 0;
