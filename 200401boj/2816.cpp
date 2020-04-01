@@ -36,7 +36,7 @@ int main()
 
 		if (s == "KBS1")
 			a = i;
-		else
+		else if (s == "KBS2")
 			b = i;
 	}
 
