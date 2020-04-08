@@ -84,6 +84,5 @@ int main()
 			answer = min(answer, get_result4(v[i], v[i + 1], v[i + 2], v[i + 3]));
 		cout << answer;
 	}
-
 	return 0;
 }
