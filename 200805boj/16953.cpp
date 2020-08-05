@@ -31,6 +31,7 @@ bool dfs(long long current, int idx)
 	for (int i = 0; i < 2; i++)
 	{
 		long long temp = A;
+
 		if (i == 0)
 			A *= 2;
 		else
@@ -58,7 +59,7 @@ int main()
 	cin.tie(NULL);
 
 	cin >> A >> B;
-	cout << dfs(A, 0) ? answer + 1 : -1;
+	cout << (dfs(A, 0) ? answer + 1 : -1);
 
 	return 0;
 }
