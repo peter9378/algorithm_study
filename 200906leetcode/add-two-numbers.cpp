@@ -12,7 +12,8 @@ class Solution {
 public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		int a, b, c = 0;
-		string sum = "";
+		ListNode *result = nullptr, *temp = nullptr;
+
 		while (l1 || l2) {
 			int up = c;
 			a = b = c = 0;
@@ -24,19 +25,19 @@ public:
 				b = l2->val;
 				l2 = l2->next;
 			}
-			sum += (char)((a + b + up) % 10 + '0');
+			ListNode* current = new ListNode((a + b + up) % 10);
+			if (!result) result = current;
+			if (temp) temp->next = current;
+			temp = current;
 			c = (a + b + up) / 10;
 		}
-		if (c) sum += "1";
 
-		ListNode *result = nullptr, *temp = nullptr;
-		for (auto s : sum) {
-			ListNode* current = new ListNode(s - '0');
+		if (c) {
+			ListNode* current = new ListNode(1);
 			if (!result) result = current;
 			if (temp) temp->next = current;
 			temp = current;
 		}
-
 		return result;
 	}
 };
