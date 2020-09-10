@@ -1,8 +1,8 @@
 /**
 *	BOJ
-*	No.3033	가장 긴 문자열
+*	No.1058	친구
 *	@author	peter9378
-*	@date		2020.09.09
+*	@date		2020.09.10
 */
 #include <iostream>
 #include <algorithm>
