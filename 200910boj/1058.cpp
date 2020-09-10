@@ -20,46 +20,45 @@
 #include <numeric>
 using namespace std;
 
-const int MOD[2] = { 100000007,1000000009 };
-const int BASE = 31;
+#define MOD 1000000000000000;
+#define MAX_SIZE 500000;
 
-int N;
-string S;
-long long arr[2], arrr[2];
+int n;
+char arr[55][55];
+bool visit[55];
 
-unordered_set<long long> s;
-
-bool check(int m)
+int bfs(int vertex) 
 {
-	s.clear();
-	for (int i = 0; i < 2; i++)
-		arr[i] = 1, arrr[i] = S[0];
-	for (int i = 1; i < m; ++i)
+	memset(visit, 0, sizeof(visit));
+
+	queue<pair<int, int> > q;
+
+	q.push(make_pair(vertex, 0));
+	visit[vertex] = 1;
+
+	while (!q.empty()) 
 	{
-		for (int j = 0; j < 2; j++)
+		int now = q.front().first;
+		int breath = q.front().second;
+		q.pop();
+
+		if (breath == 2) break;
+
+		for (int i = 0; i < n; i++)
 		{
-			arrr[j] = (arrr[j] * BASE + S[i]) % MOD[j];
-			arr[j] = arr[j] * BASE % MOD[j];
+			if (arr[now][i] == 'Y' && !visit[i])
+			{
+				visit[i] = 1;
+				q.push(make_pair(i, breath + 1));
+			}
 		}
 	}
 
-	s.emplace(arrr[0] << 32 | arrr[1]);
-	for (int i = m; i < N; ++i)
-	{
-		for (int j = 0; j < 2; j++)
-		{
-			arrr[j] = (arrr[j] - S[i - m] * arr[j] % MOD[j] + MOD[j]) % MOD[j];
-			arrr[j] = (arrr[j] * BASE + S[i]) % MOD[j];
-		}
+	int result = 0;
+	for (int i = 0; i < n; i++) 
+		result += visit[i];
 
-		long long temp = arrr[0] << 32 | arrr[1];
-
-		if (s.find(temp) == s.end())
-			s.emplace(temp);
-		else
-			return true;
-	}
-	return false;
+	return result - 1;
 }
 
 // main funcntion
@@ -68,20 +67,17 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	cin >> N >> S;
+	cin >> n;
 
-	int left = 0, right = N, answer;
-	while (left <= right)
+	for (int i = 0; i < n; i++)
 	{
-		int mid = (left + right) / 2;
-		if (check(mid))
-		{
-			answer = mid;
-			left = mid + 1;
-		}
-		else
-			right = mid - 1;
+		for (int j = 0; j < n; j++)
+			cin >> arr[i][j];
 	}
+
+	int answer = 0;
+	for (int i = 0; i < n; i++)
+		answer = max(answer, bfs(i));
 
 	cout << answer;
 
