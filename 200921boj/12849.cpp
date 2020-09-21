@@ -1,8 +1,8 @@
 /**
 *	BOJ
-*	No.12849	본대 산책
+*	No.14939	불 끄기
 *	@author	peter9378
-*	@date		2020.09.21
+*	@date		2020.09.17
 */
 #include <iostream>
 #include <algorithm>
