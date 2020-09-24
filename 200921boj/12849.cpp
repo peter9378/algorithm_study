@@ -32,7 +32,7 @@ int matrix[64] = {
 	0,0,0,0,0,1,0,1,
 	0,0,0,0,1,0,1,0
 };
-int *arr[30] = { matrix, };
+int *arr[33] = { matrix, };
 
 int sum(int* m1, int* m2, int a, int b)
 {
