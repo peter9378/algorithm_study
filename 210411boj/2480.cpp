@@ -1,8 +1,8 @@
 /**
 *	BOJ
-*	No.1269	대칭 차집합
+*	No.2480	주사위 세개
 *	@author	peter9378
-*	@date		2021.04.09
+*	@date		2021.04.11
 */
 #include <iostream>
 #include <algorithm>
