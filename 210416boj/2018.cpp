@@ -44,8 +44,7 @@ int main()
 		}
 	}
 
-	cout << answer;;
-
+	cout << answer;
 
 	return 0;
 }
