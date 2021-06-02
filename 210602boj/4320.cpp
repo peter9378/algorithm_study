@@ -30,6 +30,13 @@ int main()
 	long long x;
 	while (cin >> x)
 	{
+		bool flag = false;
+		if (x < 0)
+		{
+			x *= -1;
+			flag = true;
+		}
+
 		if (!x)
 			break;
 
@@ -47,7 +54,11 @@ int main()
 				cnt++;
 
 				if (temp == x)
+				{
+					if (flag && !(cnt % 2))
+						continue;
 					answer = max(answer, cnt);
+				}
 			}
 		}
 		cout << answer << "\n";
