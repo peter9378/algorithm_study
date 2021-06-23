@@ -21,36 +21,41 @@
 #include <complex>
 using namespace std;
 
-#define MAX 100001
+long long N, T;
+vector<int> v;
 
-int arr[MAX], temp[MAX];
-int N, T;
-
-bool check(int target)
+bool chk(int target)
 {
-	int answer = 0;
-	for (int i = 0; i < N; i++)
-		arr[i] = temp[i];
+	long long cnt = 0;
+	vector<int> arr;
 
-	for (int i = 0; i < N - 1; i++)
+	for (auto i : v)
+		arr.push_back(i);
+
+	for (int i = 1; i < N; i++)
 	{
-		if (temp[i + 1] > temp[i] + target)
+		if (arr[i - 1] + target < arr[i])
 		{
-			answer += temp[i + 1] - temp[i] - target;
-			temp[i + 1] = temp[i] + target;
+			cnt += arr[i] - (arr[i - 1] + target);
+			arr[i] = arr[i - 1] + target;
 		}
+
+		if (cnt > T)
+			return false;
 	}
 
 	for (int i = N - 1; i > 0; i--)
 	{
-		if (temp[i - 1] > temp[i] + target)
+		if (arr[i] + target < arr[i - 1])
 		{
-			answer += temp[i - 1] - temp[i] - target;
-			temp[i - 1] = temp[i] + target;
+			cnt += arr[i - 1] - (arr[i] + target);
+			arr[i - 1] = arr[i] + target;
 		}
-	}
 
-	return answer <= T;
+		if (cnt > T)
+			return false;
+	}
+	return true;
 }
 
 // main function
@@ -59,28 +64,44 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	for (int i = 0; i < MAX; i++)
-		arr[i] = temp[i] = 0;
-
 	cin >> N >> T;
-
+	v.resize(N);
+	int left = 0, right = 0;
 	for (int i = 0; i < N; i++)
-		cin >> temp[i];
-
-	int low = 0, mid, high = 1e9;
-	while (low < high)
 	{
-		mid = (low + high) / 2;
-
-		if (check(mid))
-			high = mid;
-		else
-			low = mid + 1;
+		cin >> v[i];
+		right = max(right, v[i]);
 	}
 
-	cout << arr[0];
+	int mid;
+	for (int i = 0; i < 500; i++)
+	{
+		mid = (left + right) >> 1;
+		if (chk(mid))
+			right = mid;
+		else
+			left = mid;
+	}
+
+
+	vector<int> vv;
+	for (auto i : v)
+		vv.push_back(i);
+
 	for (int i = 1; i < N; i++)
-		cout << " " << arr[i];
+	{
+		if (vv[i - 1] + right < vv[i])
+			vv[i] = vv[i - 1] + right;
+	}
+
+	for (int i = N - 1; i > 0; i--)
+	{
+		if (vv[i] + right < vv[i - 1])
+			vv[i - 1] = vv[i] + right;
+	}
+
+	for (auto i : vv)
+		cout << i << " ";
 
 	return 0;
 }
