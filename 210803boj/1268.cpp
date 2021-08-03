@@ -1,8 +1,8 @@
 /**
 *	BOJ
-*	No.1072	게임
+*	No.1268	임시 반장 정하기
 *	@author	peter9378
-*	@date		2021.08.01
+*	@date		2021.08.03
 */
 #include <iostream>
 #include <algorithm>
@@ -21,8 +21,8 @@
 #include <complex>
 using namespace std;
 
-int arr[1005][5];
-int dp[1005][1005];
+int arr[1001][5];
+bool check[1001][1001];
 
 // main function
 int main()
@@ -38,27 +38,37 @@ int main()
 			cin >> arr[i][j];
 	}
 
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		int maxi;
-		int mini;
-		int temp = 0;
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < N - 1; j++)
 		{
-			for (int k = 0; k < N; k++)
+			for (int k = j + 1; k < N; k++)
 			{
-				if (arr[i][j] == arr[k][j])
-					temp += !dp[i][k], dp[i][k] = 1;
+				if (arr[j][i] == arr[k][i])
+					check[j][k] = check[k][j] = true;
 			}
-		}
-
-		if (maxi < temp)
-		{
-			maxi = temp;
-			mini = i;
 		}
 	}
 
-	cout << c + 1 << endl;
+	int answer = -1;
+	int temp = -1;
+	for (int i = 0; i < N; i++)
+	{
+		int current = 0;
+		for (int j = 0; j < N; j++)
+		{
+			if (check[i][j])
+				current++;
+		}
+
+		if (temp < current)
+		{
+			answer = i + 1;
+			temp = current;
+		}
+	}
+
+	cout << answer;
+
 	return 0;
 }
